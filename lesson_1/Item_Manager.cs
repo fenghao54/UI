@@ -9,6 +9,8 @@ public class Item_Manager : MonoBehaviour {
 
     public GameObject Com_Item;
 
+    
+
     public RectTransform rectTran;//是content 对象，也是控制滑动平面大小的
 
     public Button Btn_AddItem;
@@ -32,7 +34,7 @@ public class Item_Manager : MonoBehaviour {
         Btn_AddItem.onClick.AddListener(AddItem);//添加监听事件，当点击的时候运行AddItem的函数。
         Btn_RemoveItem.onClick.AddListener(RemoveItem);
         Btn_Close.onClick.AddListener(CloseMenu);
-        Com_Item = Resources.Load("Weapons") as GameObject;
+        Com_Item = Resources.Load("Com_Item") as GameObject;
         Init();
     }
 
@@ -44,6 +46,7 @@ public class Item_Manager : MonoBehaviour {
             obj.transform.SetParent(rectTran);
 
             obj.gameObject.transform.localScale = Vector3.one;
+            obj.AddComponent<Drag2>();
             currentItemNum++;
         }
     }
@@ -51,6 +54,8 @@ public class Item_Manager : MonoBehaviour {
     public void AddItem()
     {
         var obj = GameObject.Instantiate(Com_Item) as GameObject;
+        obj.transform.GetChild(0).gameObject.AddComponent<Drag2>();
+        //obj.AddComponent<Drag>();
         obj.transform.SetParent(rectTran);
  
         obj.gameObject.transform.localScale = Vector3.one;//使新实例化的物体大小和父级的大小比例一致

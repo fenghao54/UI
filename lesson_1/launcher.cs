@@ -12,6 +12,9 @@ public class launcher : MonoBehaviour {
 
         GameObject paker = UIManager.Instance.AddpageUI("Btn_Menu");//加一个菜单按钮，用UIManager的单例创建
         paker.AddComponent<Add_Item>();
+
+        
+
     }
 
 

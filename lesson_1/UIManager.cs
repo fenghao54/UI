@@ -20,6 +20,7 @@ public class UIManager : MonoBehaviour
         {
             UIRoot = GameObject.Instantiate(UIRoot);
             UIRoot.name = "UIRoot";
+            //UIRoot.AddComponent<Drag>();
 
             DontDestroyOnLoad(UIRoot);
             
